@@ -1,0 +1,21 @@
+query {
+  search(first: 100, type: ISSUE, query: "user:dfberry state:open") {
+    issueCount
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ... on Issue {
+          createdAt
+          title
+          url,
+          repository {
+            name
+          }
+        }
+      }
+    }
+  }
+}
